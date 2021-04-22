@@ -1,0 +1,20 @@
+.product {
+  width: 200px;
+  height: 100px;
+  border: 1px solid black;
+  display: flex;
+}
+
+.image {
+  width: 50%;
+}
+.column {
+  width: 50%;
+}
+.column p {
+  font-size: 0.7em;
+  margin: 0px;
+}
+.column .stock {
+  font-size: 1.2em;
+}

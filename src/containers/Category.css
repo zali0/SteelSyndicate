@@ -1,0 +1,18 @@
+.category {
+  width: 90%;
+  margin: 0 auto;
+  border: 2px solid black;
+}
+.top {
+  display: flex;
+  justify-content: space-between;
+}
+.name {
+  margin: 10px;
+  font-size: 1.5em;
+}
+.search {
+  margin: 10px;
+  align-self: center;
+  height: 20px;
+}
