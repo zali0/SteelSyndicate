@@ -1,8 +1,7 @@
 import React from 'react';
 import Category from '../containers/Category';
 import {categories} from '../api';
-import {products} from '../api';
-
+import { connect } from 'react-redux';
 class DisplayCategories extends React.Component {
     render() {
         let filteredProducts = [];
@@ -11,16 +10,20 @@ class DisplayCategories extends React.Component {
             (
                 categories.map((category, i) => {
                     filteredProducts= [];
-                    for(let i=0;i<products.length; ++i) {
-                        if(category === products[i].category){
-                            console.log(category)
-                            console.log(products[i].category)
-                            filteredProducts.push(products[i]);
-                            console.log(filteredProducts)
+                    console.log(JSON.stringify(this.props.products.length))
+                    for(let i=0;i<this.props.products.length; ++i) {
+                        console.log(this.props.products[i])
+                            console.log(this.props.products)
+
+                        if(category === this.props.products[i].category){
+                            console.log(this.props.products[i])
+                            console.log(this.props.products)
+
+                            filteredProducts.push(this.props.products[i]);
                         }
                     }
-                    console.log("FILTERED ARRAY")
-                    console.log(JSON.stringify(filteredProducts))
+                    console.log("FILTEREDD PRODUCTS")
+                    console.log(filteredProducts)
                   return (
                     <Category key={i} categoryName={categories[i]} products={filteredProducts}/>
                   );
@@ -32,5 +35,18 @@ class DisplayCategories extends React.Component {
     }
     
 }
+function mapStateToProps(state) {
+    if (typeof state.products.products !== 'undefined') {
+        debugger;
+        return { products: state.products.products }   
+      }
+      else {
+          debugger;
+          return {products: state.products}
+      }
+          // console.log("YOOOOOOOOOOOOOO")
+    // console.log(JSON.stringify(state.products.length))
+    // return { products: state.products.products }
+}
 
-export default DisplayCategories;
+ export default connect(mapStateToProps)(DisplayCategories)

@@ -1,5 +1,5 @@
 .displayProducts {
   display: flex;
   flex-direction: row;
-  min-height: 300px;
+  flex-wrap: wrap;
 }

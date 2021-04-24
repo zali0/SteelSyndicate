@@ -1,0 +1,34 @@
+.front {
+  width: 40%;
+  margin: 0 auto;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.productDescription .image {
+  width: 200px;
+}
+.productDescription .column {
+  width: 50%;
+  text-align: center;
+  display: flex;
+  font-size: 2em;
+  flex-direction: column;
+  justify-content: center;
+}
+.productDescription .column .name{
+    font-size: 1em;
+}
+.frameDiv {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+.frame {
+    margin: 0 auto;
+    width: 1000px;
+    height: 500px;
+}

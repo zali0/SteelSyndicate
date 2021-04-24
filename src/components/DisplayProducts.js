@@ -15,6 +15,7 @@ class DisplayProducts extends React.Component {
                     <Product
                       key={i}
                       name={this.props.products[i].name}
+                      image={this.props.products[i].image}
                       category={this.props.products[i].category}
                       dimensions={this.props.products[i].dimensions}
                       unit={this.props.products[i].unit}

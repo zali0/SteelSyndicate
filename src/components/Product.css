@@ -6,9 +6,11 @@
 }
 
 .image {
+  padding: 5px;
   width: 50%;
 }
 .column {
+  padding: 10px;
   width: 50%;
 }
 .column p {

@@ -1,5 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import DisplayProducts from '../components/DisplayProducts';
+import AddModal from './AddModal';
 import './Category.css';
 
 class Category extends React.Component {
@@ -11,16 +13,12 @@ class Category extends React.Component {
         }
     }
     componentDidMount() {
-        console.log(this.props.categoryName)
-        console.log(this.props.products)
-
         this.setState({products: this.props.products});
     }
     onSearchChange = (event) => {
         this.setState({searchfield: event.target.value})
-        
-
     }
+    
     render() {
         const {products, searchfield} = this.state;
         const {categoryName} = this.props
@@ -33,13 +31,13 @@ class Category extends React.Component {
                     <p className="name">{categoryName}</p>
                     <input onChange={this.onSearchChange} className="search" type="text"/>
                 </div>
-                <div>
-                    {/* <hr /> */}
+                <div className="inline">
                     <DisplayProducts products={filteredProducts}/>
+                    <AddModal />
                 </div>
             </div>
         )
     }
 }
 
-export default Category;
+export default connect()(Category);

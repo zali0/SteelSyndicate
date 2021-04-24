@@ -2,6 +2,7 @@
   width: 90%;
   margin: 0 auto;
   border: 2px solid black;
+  min-height: 300px;
 }
 .top {
   display: flex;
@@ -15,4 +16,17 @@
   margin: 10px;
   align-self: center;
   height: 20px;
+}
+.inline {
+  display: flex;
+  flex-wrap: wrap;
+}
+.add {
+  margin: 10px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  cursor: pointer;
 }
