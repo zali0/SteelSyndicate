@@ -37,11 +37,9 @@ class DisplayCategories extends React.Component {
 }
 function mapStateToProps(state) {
     if (typeof state.products.products !== 'undefined') {
-        debugger;
         return { products: state.products.products }   
       }
       else {
-          debugger;
           return {products: state.products}
       }
           // console.log("YOOOOOOOOOOOOOO")

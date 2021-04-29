@@ -20,3 +20,10 @@
 .column .stock {
   font-size: 1.2em;
 }
+.details {
+  text-decoration: none;
+  color: black;
+}
+.details:hover {
+  text-decoration: underline;
+}

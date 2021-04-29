@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Table from '../components/Table'
 import image from '../images/image.jpg'
 import back from '../images/back.png'
@@ -12,16 +12,23 @@ class Homepage extends React.Component {
             { make: "Ford", model: "Mondeo", price: 32000 },
             { make: "Porsche", model: "Boxter", price: 72000 }
         ];
-
-
+        const { match: { params } } = this.props;
+        // https://scotch.io/courses/using-react-router-4/route-params#:~:text=This%20is%20easy%20to%20do,actual%20value%20in%20the%20URL.
+        // axios.get(`/api/users/${params.userId}`)
+        //   .then(({ data: user }) => {
+        //     console.log('user', user);
+      
+        //     this.setState({ user });
+        //   });
         return(
             <div className="productDescription">
                 <h1>Secunderabad Steel Syndicate</h1>
-                <Link to="/"><img src={back} alt="Back Arrow" width={70}/></Link>
+                <Link to="/home"><img src={back} alt="Back Arrow" width={70}/></Link>
                 <div className="front">
                     <img className="image" alt="Centering Sheet" src={image}/>
                     <div className="column">
                         <p className="name">Centering Sheet</p>
+                        <p>{params.id}</p>
                         <p>2' x 3'<small> Angular</small></p>
                         <p className="stock">45<small>pcs</small></p>
                     </div>

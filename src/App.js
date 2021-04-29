@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Login from './pages/Login';
 import Homepage from './pages/Homepage';
 import ProductDescription from './pages/ProductDescription';
 import './App.css';
@@ -8,9 +9,9 @@ function App() {
   return (
     <div>
       <Switch>
-        {/* <Login /> */}
-        <Route path='/' component={Homepage} exact />
-        <Route path='/product' component={ProductDescription} />
+        <Route path='/' component={Login} exact />
+        <Route path='/home' component={Homepage} exact />
+        <Route path="/products/:id" component={ProductDescription} />
       </Switch>
     
     </div>

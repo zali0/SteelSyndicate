@@ -8,7 +8,6 @@ class Homepage extends React.Component {
             return(
                 <Fragment>
                     <h1>Secunderabad Steel Syndicate</h1>
-                    {this.props.logged}
                     <DisplayCategories />
                 </Fragment>
                  );
@@ -16,10 +15,6 @@ class Homepage extends React.Component {
 }
 
 function mapStateToProps(state) {
-    // const { isLogged } = state
-    console.log(state.logged)
-
-    return { logged: state.logged }
   }
   
   export default connect(mapStateToProps)(Homepage)

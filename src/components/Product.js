@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Product.css';
 
 class Product extends React.Component {
@@ -11,7 +12,7 @@ class Product extends React.Component {
                     <p>{name}</p>
                     <p>{dimensions}<small>{unit}</small></p>
                     <p className="stock">{stock}<small>pcs</small></p>
-                    <p>Learn More</p>
+                    <Link className="details" to="/products/2">Details</Link>
                 </div>
             </div>
         );

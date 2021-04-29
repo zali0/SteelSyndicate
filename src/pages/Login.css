@@ -1,0 +1,19 @@
+.login {
+    text-align: center;
+    line-height: 2;
+}
+.valid {
+    background-color: rgb(38, 0, 255);
+    color: #fff;
+    padding: 4px;
+    border-radius: 3px;
+    text-decoration: none;
+}
+.invalid {
+    background-color: rgb(170, 0, 0);
+    color: #fff;
+    padding: 4px;
+    border-radius: 3px;
+    text-decoration: none;
+
+}
