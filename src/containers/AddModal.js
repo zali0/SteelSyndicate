@@ -7,7 +7,7 @@ import add from '../images/add.png'
 import './Category.css';
 import './AddModal.css';
 import { useDispatch } from 'react-redux';
-import { addProduct } from '../actions';
+import { addProduct, fetchData } from '../actions';
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: 'flex',
@@ -42,24 +42,34 @@ const [stock, setStock] = useState("");
 
   const dispatch = useDispatch();
 const handleSubmit = (evt) => {
-    evt.preventDefault();
-    let object = {
-        id:1,
-        name,
-        category,
-        dimensions,
-        unit,
-        // image: images.centeringSheets,
-        stock
-    }
+    // evt.preventDefault();
     console.log(`Submitting  ${name}`)
     console.log(`Submitting  ${category}`)
     console.log(`Submitting  ${dimensions}`)
     console.log(`Submitting  ${unit}`)
     console.log(`Submitting  ${stock}`)
-
-dispatch(addProduct(object))
+    fetch('http://localhost:3003/addProduct', {
+            method: "POST",
+            body: JSON.stringify({
+              id:1,
+              name,
+              category,
+              dimensions,
+              unit,
+              stock
+          }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        fetch("http://localhost:3003/data")
+        .then(response => response.json())
+        .then(data=> dispatch(fetchData(data)));
 }
+
+
   return (
     <div style= {{ display: "flex"}}>
       <div onClick={handleOpen} className="add">

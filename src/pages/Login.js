@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import './Login.css';
 
 let shouldLogin = false;
@@ -13,6 +13,7 @@ class Login extends React.Component {
             password: ''
         }
     }
+
     onEmailChange = (event) => {
         this.setState({email: event.target.value});
         console.log(this.state.email)
@@ -22,17 +23,41 @@ class Login extends React.Component {
         console.log(this.state.password)
 
     }
-
+    authenticate () {
+        
+    }
     onSubmit () {
-        if(this.state.email === "zali2592@gmail.com" && this.state.password === "asd") {
-            shouldLogin = true;
+        fetch('http://localhost:3001/signin', {
+            method: "POST",
+            body: JSON.stringify({
+                email: this.state.email,
+                password: this.state.password,
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+        .then(response => response.json())
+        .then(json => {
+            if(json === "success") {
+                shouldLogin = true;
+            }
+            else {
+                shouldLogin = false;
+            }
+        });
+        if(shouldLogin) {
             return(
-                <Link className="valid" to="/home">Submit</Link>
+                <div>
+                    {/* <Link className="valid" to="/home">Submit</Link> */}
+                    <Redirect to="/home" />
+                </div>
+                
             )
         }
         else {
-            shouldLogin = false;
-            return <Link className="invalid" to="/home">Submit</Link>
+            return <Link className="valid" to="/">Submit</Link>
+
         }
     }
     inCorrect () {

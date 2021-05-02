@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux';
 import loggedReducer from './isLogged';
-import productsReducer from './productsReducer';
+import dataReducer from './dataReducer';
 
 const rootReducer = combineReducers({
     logged: loggedReducer,
-    products: productsReducer
+    data: dataReducer
 })
 
 export default rootReducer;

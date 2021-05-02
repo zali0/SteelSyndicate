@@ -4,6 +4,9 @@ import DisplayCategories from '../components/DisplayCategories';
 import './Homepage.css';
 
 class Homepage extends React.Component {
+    componentDidMount() {
+        // dispatch(addProduct(object))
+    };
     render() {
             return(
                 <Fragment>
@@ -13,8 +16,5 @@ class Homepage extends React.Component {
                  );
         }
 }
-
-function mapStateToProps(state) {
-  }
   
-  export default connect(mapStateToProps)(Homepage)
+  export default connect()(Homepage)
