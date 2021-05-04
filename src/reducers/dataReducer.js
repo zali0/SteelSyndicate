@@ -47,7 +47,12 @@ const dataReducer = (state = "", action) => {
     
         default:
           // ALWAYS have a default case in a reducer
-          return state;
+          return {
+            ...state,
+            products: "",
+            categories: "",
+            loaded: false
+          };
     }
 }
 export default dataReducer;

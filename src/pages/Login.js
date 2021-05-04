@@ -27,7 +27,7 @@ class Login extends React.Component {
         
     }
     onSubmit () {
-        fetch('http://localhost:3001/signin', {
+        fetch('http://localhost:3003/signin', {
             method: "POST",
             body: JSON.stringify({
                 email: this.state.email,
@@ -93,6 +93,6 @@ function mapStateToProps(state) {
     console.log(state.logged)
 
     return { logged: state.logged }
-  }
+}
   
-  export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps)(Login);

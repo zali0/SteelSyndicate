@@ -4,7 +4,7 @@ import './Product.css';
 
 class Product extends React.Component {
     render() {
-        const {name, image, dimensions, unit, stock} =  this.props
+        const {id, name, image, dimensions, unit, stock} =  this.props;
         return(
             <div className="product">
                 <img  className="image" alt="Centering Sheet" src={image}/>
@@ -12,7 +12,7 @@ class Product extends React.Component {
                     <p>{name}</p>
                     <p>{dimensions}<small>{unit}</small></p>
                     <p className="stock">{stock}<small>pcs</small></p>
-                    <Link className="details" to="/products/2">Details</Link>
+                    <Link className="details" to={`/products/${id}`}>Details</Link>
                 </div>
             </div>
         );

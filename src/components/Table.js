@@ -1,34 +1,61 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AgGridColumn, AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-import { useInput } from './useInput';
 
-const Table = () => {
+const Table = (props) => {
     const [gridApi, setGridApi] = useState(null);
     const [gridColumnApi, setGridColumnApi] = useState(null);
-    const { value, bind, reset } = useInput('');
-    const [rowData, setRowData] = useState([
-        { date: "02/02/2021" , produced: 10, sold: 5, current: 12 },
-    ]);
+    // const rowData = [
+    //         {make: "Toyota", model: "Celica", price: 35000},
+    //         {make: "Ford", model: "Mondeo", price: 32000},
+    //         {make: "Porsche", model: "Boxter", price: 72000}
+    //       ];
+        
+    const [rowData, setRowData] = useState(props.record);
+
+    const { id } = props;
+
+    useEffect(() => {
+        setRowData(props.record)
+        fetch(`http://localhost:3003/product/${id}`)
+        .then(result => result.json())
+        .then(rowData => setRowData(rowData.record))
+    }, [id]);
+
+    const [date, setDate] = useState("");
+    const [produced, setProduced] = useState("");
+    const [sold, setSold] = useState("");
+    const [stock, setStock] = useState("");
+
     const handleSubmit = (evt) => {
-        evt.preventDefault();
-        alert(`Submitting Name ${value}`);
-        reset();
+        // evt.preventDefault();
+        console.log(`Submitting  ${date}`)
+        console.log(`Submitting  ${produced}`)
+        console.log(`Submitting  ${sold}`)
+        let stock = produced - sold;
+        let totalProduced;
+        let totalSold;
+        totalProduced += produced;
+        totalSold += sold;
+        fetch(`http://localhost:3003/updateRecord/${props.id}`, {
+            method: "POST",
+            body: JSON.stringify({ date , produced, sold, stock}),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+        .then(response => response.json())
+        .then(json => console.log(json));
+        if(rowData.length === 0) {
+            setRowData([{ date , produced, sold, stock}]);
+        }
+        else
+            setRowData( arr => [...arr, { date , produced, sold, stock}]);
+        console.log(rowData)
+        // DAte produced Sold Stock
     }
-    const add = () => {
-        // <AddField />
-        // totalProduced += produced;
-        // totalSold += sold;
-        // stock = totalproduced - totalSold;
-        // let data = {
-        //     date: date,
-        //     produced: produced,
-        //     sold: sold,
-        //     stock: stock
-        // }
-        // array.push;
-    }
+    console.log(props.record)
     return (
         <div>
             <div className="ag-theme-alpine" style={{ height: 400, width: 800 }}>
@@ -40,21 +67,35 @@ const Table = () => {
                     <AgGridColumn field="stock"></AgGridColumn>
                 </AgGridReact>
             </div>
-            Date: <input type="date"/><br/>
-            Produced: <input type="number"/><br/>
-            Sold: <input type="number"/><br/>
-            Stock: <input type="number"/><br/>
-            <button onClick={add()}>Add</button>
-            <form onSubmit={handleSubmit}>
-              <label>
-                Name:
-                <input type="text" {...bind} />
-              </label>
-              <label>
-                password
-                <input type="password" {...bind} />
-              </label>
-              <input type="submit" value="Submit" />
+            <form className="addProductForm" onSubmit={handleSubmit}>
+                <label>
+                    Date:
+                <input
+                    type="date"
+                    value={date}
+                    onChange={e => setDate(e.target.value)}
+                />
+                </label>
+                <br />
+                <label>
+                    Produced:
+                <input
+                    type="number"
+                    value={produced}
+                    onChange={e => setProduced(e.target.value)}
+                />
+                </label>
+                <br />
+                <label>
+                    Sold:
+                <input
+                    type="number"
+                    value={sold}
+                    onChange={e => setSold(e.target.value)}
+                />
+                </label>
+                <br />
+                <input type="submit" value="Add Product" />
             </form>
         </div>
         

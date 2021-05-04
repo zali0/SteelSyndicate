@@ -14,6 +14,7 @@ class DisplayProducts extends React.Component {
                   return (
                     <Product
                       key={i}
+                      id={this.props.products[i].id}
                       name={this.props.products[i].name}
                       image={this.props.products[i].image}
                       category={this.props.products[i].category}

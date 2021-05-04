@@ -1,25 +1,32 @@
 import React, { Fragment } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Table from '../components/Table'
-import image from '../images/image.jpg'
 import back from '../images/back.png'
 import './ProductDescription.css';
 
 class Homepage extends React.Component {
+    constructor() {
+        super();
+        this.state =  {
+            item: ""
+        }
+    }
+    componentDidMount() {
+        const { match: { params } } = this.props;
+        fetch(`http://localhost:3003/product/${params.id}`)
+        .then(response => response.json())
+        .then(item=>  this.setState({item}));
+       
+    }
     render() {
         let array = [
             { make: "Toyota", model: "Celica", price: 35000 },
             { make: "Ford", model: "Mondeo", price: 32000 },
             { make: "Porsche", model: "Boxter", price: 72000 }
         ];
-        const { match: { params } } = this.props;
-        // https://scotch.io/courses/using-react-router-4/route-params#:~:text=This%20is%20easy%20to%20do,actual%20value%20in%20the%20URL.
-        // axios.get(`/api/users/${params.userId}`)
-        //   .then(({ data: user }) => {
-        //     console.log('user', user);
-      
-        //     this.setState({ user });
-        //   });
+        // const { match: { params } } = this.props;
+        console.log(this.state.item.record)
+        const {name, image, id, dimensions, unit, stock, record} = this.state.item;
         return(
             <div className="productDescription">
                 <h1>Secunderabad Steel Syndicate</h1>
@@ -27,10 +34,10 @@ class Homepage extends React.Component {
                 <div className="front">
                     <img className="image" alt="Centering Sheet" src={image}/>
                     <div className="column">
-                        <p className="name">Centering Sheet</p>
-                        <p>{params.id}</p>
-                        <p>2' x 3'<small> Angular</small></p>
-                        <p className="stock">45<small>pcs</small></p>
+                        <p className="name">{name}</p>
+                        <p>{id}</p>
+                        <p>{dimensions}<small>{unit}</small></p>
+                        <p className="stock">{stock}<small>pcs</small></p>
                     </div>
                 </div>
                 <div className="frameDiv">
@@ -40,7 +47,7 @@ class Homepage extends React.Component {
                     frameborder="0" 
                     scrolling="no"> 
                 </iframe> */}
-                <Table />
+                <Table id={id} record={record} />
                 </div>
             </div>
         );

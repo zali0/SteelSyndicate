@@ -49,8 +49,6 @@ class DisplayCategories extends React.Component {
     
 }
 const mapStateToProps = (state) => {
-    console.log("DISPLAY CATEGORIES")
-    console.log(state)
     return {
         products: state.data.products,
         loaded: state.data.loaded,
