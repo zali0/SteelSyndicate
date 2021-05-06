@@ -1,4 +1,9 @@
-h1 {
-  margin: 20px;
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
+.homepage {
+  background-color: #f5f5dc;
+}
+.homepage h1 {
+  margin: 0px;
   padding: 20px;
+  font-family: 'Electrolize', sans-serif;
 }

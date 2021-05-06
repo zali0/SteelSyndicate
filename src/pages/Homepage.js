@@ -9,10 +9,10 @@ class Homepage extends React.Component {
     };
     render() {
             return(
-                <Fragment>
+                <div className="homepage">
                     <h1>Secunderabad Steel Syndicate</h1>
                     <DisplayCategories />
-                </Fragment>
+                </div>
                  );
         }
 }

@@ -51,7 +51,6 @@ const handleSubmit = (evt) => {
     fetch('http://localhost:3003/addProduct', {
             method: "POST",
             body: JSON.stringify({
-              id:1,
               name,
               category,
               dimensions,
@@ -68,10 +67,8 @@ const handleSubmit = (evt) => {
         .then(response => response.json())
         .then(data=> dispatch(fetchData(data)));
 }
-
-
   return (
-    <div style= {{ display: "flex"}}>
+    <div className="addModal" style= {{ display: "flex"}}>
       <div onClick={handleOpen} className="add">
         <img src={add} alt={"Add"} />
       </div>
@@ -90,17 +87,16 @@ const handleSubmit = (evt) => {
         <Fade in={open}>
           <div className={classes.paper}>
             <form className="addProductForm" onSubmit={handleSubmit}>
-      <label>
-        Name:
+      <div className="flex"> 
+        <label for="name">Name: </label>
         <input
           type="text"
           value={name}
           onChange={e => setName(e.target.value)}
         />
-      </label>
-      <br />
-      <label>
-        Category:
+      </div>
+      <div className="flex"> 
+        <label for="category">Category: </label>
         <select value={category} onChange={e => setCategory(e.target.value)}>
         ["Pipes", "Centering Sheets", "Column Box", "Bridge 40mm" , "Bridge 50mm", "Scaffolders", "Accessories"];
           <option selected value="Pipes">Pipes</option>
@@ -111,36 +107,36 @@ const handleSubmit = (evt) => {
           <option value="Scaffolders">Scaffolders</option>
           <option value="Accessories">Accessories</option>
         </select>
-      </label>
-      <br />
-      <label>
-        Dimensions:
+      </div>
+      <div className="flex"> 
+        <label for="dimensions">Dimensions: </label>
         <input
           type="text"
           value={dimensions}
           onChange={e => setDimensions(e.target.value)}
+          placeholder={"Vertical 3, 2' x 3'."}
         />
-      </label>
-      <br />
-      <label>
-        Unit:
+      </div>
+      <div className="flex"> 
+      <label for="unit">Unit: </label>
         <input
           type="text"
           value={unit}
           onChange={e => setUnit(e.target.value)}
+          placeholder={"mt, angular, inches."}
         />
-      </label>
-      <br />
-      <label>
-        Stock:
+      </div>
+      <div className="flex"> 
+        <label for="stock">Stock: </label>
         <input
           type="number"
           value={stock}
           onChange={e => setStock(e.target.value)}
         />
-      </label>
-      <br />
-      <input type="submit" value="Add Product" />
+      </div>
+      <div style={{textAlign: 'center'}}>
+        <input className="button" type="submit" value="Add Product" />
+      </div>
     </form>
           </div>
         </Fade>

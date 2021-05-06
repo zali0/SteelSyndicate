@@ -1,9 +1,14 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
+
 import './Login.css';
 
 let shouldLogin = false;
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
+</style>
 
 class Login extends React.Component {
     constructor(props) {
@@ -56,7 +61,7 @@ class Login extends React.Component {
             )
         }
         else {
-            return <Link className="valid" to="/">Submit</Link>
+            return <Link className="submit" to="/">Login</Link>
 
         }
     }
@@ -73,13 +78,15 @@ class Login extends React.Component {
             return(
                 <div className="login">
                     <h1>Ventory</h1>
-                    <div>
-                        <label for="email">Email: </label>
-                        <input onChange={this.onEmailChange} type="email" name="email" id="email"/>
-                        <br />
-                        <label for="password">Password: </label>
-                        <input onChange={this.onPasswordChange} type="password" name="password" id="password"/>
-                        <br />
+                    <div className="loginForm">
+                        <div className="flex"> 
+                            <label for="email">Email: </label>
+                            <input onChange={this.onEmailChange} type="email" name="email" id="email"/>
+                        </div>
+                        <div className="flex"> 
+                            <label for="password">Password: </label>
+                            <input onChange={this.onPasswordChange} type="password" name="password" id="password"/>
+                        </div>
                         {this.inCorrect()}
                         {this.onSubmit()}
                     </div>

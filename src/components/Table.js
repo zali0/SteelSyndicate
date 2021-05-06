@@ -33,27 +33,15 @@ const Table = (props) => {
         console.log(`Submitting  ${date}`)
         console.log(`Submitting  ${produced}`)
         console.log(`Submitting  ${sold}`)
-        let stock = produced - sold;
-        let totalProduced;
-        let totalSold;
-        totalProduced += produced;
-        totalSold += sold;
         fetch(`http://localhost:3003/updateRecord/${props.id}`, {
             method: "POST",
-            body: JSON.stringify({ date , produced, sold, stock}),
+            body: JSON.stringify({ date, produced, sold, stock}),
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
             }
         })
         .then(response => response.json())
         .then(json => console.log(json));
-        if(rowData.length === 0) {
-            setRowData([{ date , produced, sold, stock}]);
-        }
-        else
-            setRowData( arr => [...arr, { date , produced, sold, stock}]);
-        console.log(rowData)
-        // DAte produced Sold Stock
     }
     console.log(props.record)
     return (

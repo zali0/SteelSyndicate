@@ -29,11 +29,11 @@ class Category extends React.Component {
             <div className="category">
                 <div className="top">
                     <p className="name">{categoryName}</p>
-                    <input onChange={this.onSearchChange} className="search" type="text"/>
+                    <input onChange={this.onSearchChange} placeholder={"Search Products"} className="search" type="text"/>
                 </div>
                 <div className="inline">
                     <DisplayProducts products={filteredProducts}/>
-                    <AddModal />
+                    <AddModal/>
                 </div>
             </div>
         )
