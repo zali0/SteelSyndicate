@@ -1,11 +1,15 @@
-.front {
-  width: 40%;
-  margin: 0 auto;
-  border: 1px solid black;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
+body, html, * {
+  margin: 0;
+  padding: 0;
+}
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
+.productDescription {
+  background-color: #f5f5dc;
+}
+.productDescription h1 {
+  margin: 0px;
+  padding: 20px;
+  font-family: 'Electrolize', sans-serif;
 }
 .productDescription .image {
   width: 200px;
@@ -31,4 +35,14 @@
     margin: 0 auto;
     width: 1000px;
     height: 500px;
+}
+.front {
+  width: 60%;
+  margin: 0 auto;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  background-color: #e6e6fa;
 }

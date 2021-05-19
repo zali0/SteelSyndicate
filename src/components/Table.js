@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { AgGridColumn, AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import './Table.css'
 
 const Table = (props) => {
     const [gridApi, setGridApi] = useState(null);
@@ -56,7 +57,7 @@ const Table = (props) => {
                 </AgGridReact>
             </div>
             <form className="addProductForm" onSubmit={handleSubmit}>
-                <label>
+                <label className="formLabel">
                     Date:
                 <input
                     type="date"
@@ -64,8 +65,7 @@ const Table = (props) => {
                     onChange={e => setDate(e.target.value)}
                 />
                 </label>
-                <br />
-                <label>
+                <label className="formLabel">
                     Produced:
                 <input
                     type="number"
@@ -73,8 +73,7 @@ const Table = (props) => {
                     onChange={e => setProduced(e.target.value)}
                 />
                 </label>
-                <br />
-                <label>
+                <label className="formLabel">
                     Sold:
                 <input
                     type="number"
@@ -82,7 +81,6 @@ const Table = (props) => {
                     onChange={e => setSold(e.target.value)}
                 />
                 </label>
-                <br />
                 <input type="submit" value="Add Product" />
             </form>
         </div>

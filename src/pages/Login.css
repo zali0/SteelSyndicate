@@ -1,7 +1,10 @@
 .login {
     text-align: center;
     /* line-height: 3; */
-    background-color: #241f1f;
+    background: rgb(38,0,0);
+    background-image: url("https://cdn.hipwallpaper.com/i/26/13/DCFTiE.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -10,11 +13,13 @@
     color: #fff;
 }
 .login h1 {
-    font-size: 3em;
+    font-size: 8em;
     font-family: 'Berkshire Swash', cursive;
-    margin: 0;
+    margin: 20px;
+    margin-bottom: 30px;
     padding: 0;
-    color: #ff7a00;
+    color: #ffffff;
+
 }
 .submit {
     /* background-color: rgb(253, 253, 253); */
@@ -27,8 +32,9 @@
     text-decoration: none;
 }
 .submit:hover{
+    text-decoration: underline;
     background-color: #fff;
-    color: #000;
+    color: rgb(255, 123, 0);
 }
 .invalid {
     background-color: rgb(170, 0, 0);
@@ -45,6 +51,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    background-color: rgba(0,0,0,0.7);
+    height: max-content;
+    border-radius: 10px;
+    padding:20px;
 }
 .loginForm input {
     height:20px;
@@ -54,4 +64,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 10px;
+    
+}
+.opacity {
+    /* background-color: #000; */
 }

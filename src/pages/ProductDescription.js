@@ -16,7 +16,6 @@ class Homepage extends React.Component {
         fetch(`http://localhost:3003/product/${params.id}`)
         .then(response => response.json())
         .then(item=>  this.setState({item}));
-       
     }
     render() {
         let array = [
@@ -35,7 +34,6 @@ class Homepage extends React.Component {
                     <img className="image" alt="Centering Sheet" src={image}/>
                     <div className="column">
                         <p className="name">{name}</p>
-                        <p>{id}</p>
                         <p>{dimensions}<small>{unit}</small></p>
                         <p className="stock">{stock}<small>pcs</small></p>
                     </div>

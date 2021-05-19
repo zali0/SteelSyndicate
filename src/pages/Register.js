@@ -10,17 +10,19 @@ let shouldLogin = false;
 @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
 </style>
 
-class Login extends React.Component {
+class Register extends React.Component {
     constructor(props) {
         super(props);
         this.state= {
+            name: '',
             email: '',
-            password: '',
-            redirect: false
-              
+            password: ''
         }
     }
-
+    onNameChange = (event) => {
+        this.setState({name: event.target.value});
+        console.log(this.state.name)
+    }
     onEmailChange = (event) => {
         this.setState({email: event.target.value});
         console.log(this.state.email)
@@ -30,24 +32,11 @@ class Login extends React.Component {
         console.log(this.state.password)
 
     }
-    authenticate () {
-        
-    }
-    setRedirect = () => {
-        this.setState({
-          redirect: true
-        })
-      }
-    
-    renderRedirect = () => {
-        if (this.state.redirect) {
-            return <Redirect to='/home' />
-          }
-      }
-    onSubmit = () => {
-        fetch('http://localhost:3003/signin', {
+    onRegister = () => {
+        fetch('http://localhost:3003/register', {
             method: "POST",
             body: JSON.stringify({
+                name: this.state.name,
                 email: this.state.email,
                 password: this.state.password,
             }),
@@ -59,17 +48,18 @@ class Login extends React.Component {
         .then(json => {
             if(json === "success") {
                 shouldLogin = true;
-                this.setState({
-                    redirect: true
-                  });         
             }
-            else {
+            else if(json=== "Unable to Join") {
                 shouldLogin = false;
             }
         });
         if(shouldLogin) {
-
-                return <Redirect to="/home" />
+            return(
+                <div>
+                    <Redirect to="/login" />
+                </div>
+                
+            )
         }
         else {
             return(
@@ -89,9 +79,13 @@ class Login extends React.Component {
     render() {
             return(
                 <div className="login">
-                {/* <div className=""> */}
                     <h1>Ventory</h1>
                     <div className="loginForm">
+                    <p>Register</p>
+                        <div className="flex"> 
+                            <label for="email">Name: </label>
+                            <input onChange={this.onNameChange} type="text" name="name" id="name"/>
+                        </div>
                         <div className="flex"> 
                             <label for="email">Email: </label>
                             <input onChange={this.onEmailChange} type="email" name="email" id="email"/>
@@ -100,14 +94,8 @@ class Login extends React.Component {
                             <label for="password">Password: </label>
                             <input onChange={this.onPasswordChange} type="password" name="password" id="password"/>
                         </div>
-                        {/* {this.inCorrect()} */}
-                        {this.renderRedirect()}
-                        {/* <button onClick={this.setRedirect}>Login</button> */}
-                        <p onClick={this.onSubmit} className="submit" to="/home">Login</p>
-                        <Link className="submit" to="/register">Register</Link>
+                        <Link onClick={this.onRegister} className="submit" to="/">Register</Link>
                     </div>
-                {/* </div> */}
-                    
                 </div>
             );
         }
@@ -120,4 +108,4 @@ function mapStateToProps(state) {
     return { logged: state.logged }
 }
   
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps)(Register);

@@ -1,0 +1,32 @@
+.addProductForm {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 2;;
+    margin-top: 10px;
+    border:  1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px auto;
+    background-color: #2f4f4f;
+    color: white;
+}
+.addProductForm input {
+    border-radius: 10px;
+}
+.formLabel {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.ag-theme-alpine {
+    margin: 10px;
+}
+.ag-theme-alpine .ag-root-wrapper {
+    border-radius: 10px;
+}
+
+.ag-theme-alpine .ag-header {
+    background-color: brown;
+}

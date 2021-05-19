@@ -1,9 +1,38 @@
-@import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
-.homepage {
-  background-color: #f5f5dc;
-}
-.homepage h1 {
+@import url('https://fonts.googleapis.com/css2?family=KoHo:ital,wght@1,300&display=swap');
+
+html,body, * {
   margin: 0px;
-  padding: 20px;
-  font-family: 'Electrolize', sans-serif;
+  padding: 0px;
+}
+
+.homepage {
+  margin: 0px;
+  padding: 0px;
+}
+.underline {
+    height: 1px;
+    margin-top: -8px;
+    background-color: black;
+}
+
+.homepage h1 {
+  margin: 10px;
+  /* padding: 20px; */
+  font-family: 'KoHo', sans-serif;
+}
+
+.companyName {
+  margin-bottom: 10px;
+  background-color: rgb(255, 255, 255);
+  /* opacity: 0.7; */
+  color: rgb(255, 123, 0);
+  color: black;
+  padding:5px;
+  border-radius:10px;
+  width: fit-content;
+}
+.underline {
+  height: 2px;
+  margin-top: -8px;
+  background-color: rgb(254 162 59);;
 }
