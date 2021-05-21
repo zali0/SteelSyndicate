@@ -1,31 +1,27 @@
-export const FETCH_DATA_BEGIN   = 'FETCH_DATA_BEGIN';
-export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
-export const FETCH_DATA_FAILURE = 'FETCH_DATA_FAILURE';
+const DATA_REQUESTED = "DATA_REQUESTED";
+const DATA_RECIEVED = "DATA_RECIEVED";
+const DATA_FAILED = "DATA_FAILED";
 
-
-export const fetchData = (data) => {
-    return {
-        type: "FETCH_DATA",
-        payload: data
+export function getDataAction() {
+    return function(dispatch) {
+      dispatch({
+        type: DATA_REQUESTED,
+      });
+    fetch("http://localhost:3003/data")
+      .then(response => response.json())
+      .then(data => {
+          dispatch({
+          type: DATA_RECIEVED,
+          payload: data
+        })
+    })
+      .catch(error => dispatch({
+          type: DATA_FAILED,
+          payload: error
+        })
+      );
     }
-
 }
-
-// export const fetchDataBegin = () => {
-//     return{
-//         type: FETCH_DATA_BEGIN
-//     }
-// };
-
-// export const fetchDataSuccess = data => ({
-//   type: FETCH_DATA_SUCCESS,
-//   payload: { data }
-// });
-
-// export const fetchDataFailure = error => ({
-//   type: FETCH_DATA_FAILURE,
-//   payload: { error }
-// });
 
 export const addProduct = (data) => {
     return {
@@ -33,25 +29,3 @@ export const addProduct = (data) => {
         payload: data
     }
 }
-// export function fetchData() {
-//     console.log("FETCHING DATA")
-//     return dispatch => {
-//       dispatch(fetchDataBegin());
-//       return  fetch("localhost:3001/data")
-//         .then(handleErrors)
-//         .then(res => {console.log("DATAAAAAAAAA", res); res.json()})
-//         .then(json => {
-//           dispatch(fetchDataSuccess(json.data));
-//           return json.data;
-//         })
-//         .catch(error => dispatch(fetchDataFailure(error)));
-//     };
-//   }
-  
-//   // Handle HTTP errors since fetch won't.
-//   function handleErrors(response) {
-//     if (!response.ok) {
-//       throw Error(response.statusText);
-//     }
-//     return response;
-//   }

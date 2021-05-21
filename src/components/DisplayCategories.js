@@ -2,17 +2,13 @@ import React from 'react';
 import Category from '../containers/Category';
 import {categories} from '../api';
 import { connect } from 'react-redux';
-import { fetchData } from "../actions";
 
 class DisplayCategories extends React.Component {
     componentDidMount() {
-        fetch("http://localhost:3003/data")
-        .then(response => response.json())
-        .then(data=>  this.props.dispatch(fetchData(data)));
-       
+        // store.dispatch(getDataAction());
       }
     render() {
-        if(this.props.loaded === true) {
+        if(this.props.status === "received") {
             let filteredProducts = [];
             return !categories ?
             <h1>LOADING</h1> :
@@ -49,9 +45,10 @@ class DisplayCategories extends React.Component {
     
 }
 const mapStateToProps = (state) => {
+    console.log(state)
     return {
         products: state.data.products,
-        loaded: state.data.loaded,
+        status: state.data.status,
         // error: state.data.error
     };
 }

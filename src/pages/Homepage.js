@@ -10,7 +10,6 @@ class Homepage extends React.Component {
     render() {
             return(
                 <div className="homepage">
-                
                 <br />
                     <div className="companyName">
                         <h1>Secunderabad Steel Syndicate</h1>

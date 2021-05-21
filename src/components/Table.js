@@ -13,24 +13,24 @@ const Table = (props) => {
     //         {make: "Porsche", model: "Boxter", price: 72000}
     //       ];
         
-    const [rowData, setRowData] = useState(props.record);
+    const [rowData, setRowData] = useState();
 
     const { id } = props;
 
     useEffect(() => {
         setRowData(props.record)
-        fetch(`http://localhost:3003/product/${id}`)
+        fetch(`http://localhost:3003/getRecord/${id}`)
         .then(result => result.json())
-        .then(rowData => setRowData(rowData.record))
+        .then(rowData => setRowData(rowData))
     }, [id]);
-
+    console.log(rowData)
     const [date, setDate] = useState("");
     const [produced, setProduced] = useState("");
     const [sold, setSold] = useState("");
     const [stock, setStock] = useState("");
 
     const handleSubmit = (evt) => {
-        // evt.preventDefault();
+        evt.preventDefault();
         console.log(`Submitting  ${date}`)
         console.log(`Submitting  ${produced}`)
         console.log(`Submitting  ${sold}`)
@@ -42,7 +42,7 @@ const Table = (props) => {
             }
         })
         .then(response => response.json())
-        .then(json => console.log(json));
+        .then(rowData => setRowData(rowData));
     }
     console.log(props.record)
     return (

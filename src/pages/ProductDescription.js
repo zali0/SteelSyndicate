@@ -8,15 +8,26 @@ class Homepage extends React.Component {
     constructor() {
         super();
         this.state =  {
-            item: ""
+            item: "",
+            record: ""
         }
     }
     componentDidMount() {
         const { match: { params } } = this.props;
-        fetch(`http://localhost:3003/product/${params.id}`)
-        .then(response => response.json())
-        .then(item=>  this.setState({item}));
+        fetch(`http://localhost:3003/products/${params.id}`)
+        .then(res=> res.json())
+        .then(item => {
+            this.setState({item})
+            
+        });
+
+        fetch(`http://localhost:3003/getRecord/${params.id}`)
+        .then(res=> res.json())
+        .then(record => {
+            this.setState({record: record})
+        });
     }
+    // this.setState({record: data.record})
     render() {
         let array = [
             { make: "Toyota", model: "Celica", price: 35000 },
@@ -24,14 +35,15 @@ class Homepage extends React.Component {
             { make: "Porsche", model: "Boxter", price: 72000 }
         ];
         // const { match: { params } } = this.props;
-        console.log(this.state.item.record)
-        const {name, image, id, dimensions, unit, stock, record} = this.state.item;
+        console.log(this.state.item)
+        if(this.state.item !== "") {
+            const {name, image, id, dimensions, unit, stock} = this.state.item;
         return(
             <div className="productDescription">
                 <h1>Secunderabad Steel Syndicate</h1>
                 <Link to="/home"><img src={back} alt="Back Arrow" width={70}/></Link>
                 <div className="front">
-                    <img className="image" alt="Centering Sheet" src={image}/>
+                    <img className="image" alt="" src={image}/>
                     <div className="column">
                         <p className="name">{name}</p>
                         <p>{dimensions}<small>{unit}</small></p>
@@ -45,10 +57,14 @@ class Homepage extends React.Component {
                     frameborder="0" 
                     scrolling="no"> 
                 </iframe> */}
-                <Table id={id} record={record} />
+                <Table id={id} record={this.state.record} />
                 </div>
             </div>
         );
+        }
+        else {
+            return <h3>Loading</h3>
+        }
     }
 }
 

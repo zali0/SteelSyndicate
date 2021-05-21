@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
-
+import { fetchData, getDataAction } from "../actions";
+import store from '../index';
 import './Login.css';
 
 let shouldLogin = false;
@@ -59,6 +60,11 @@ class Login extends React.Component {
         .then(json => {
             if(json === "success") {
                 shouldLogin = true;
+                // store.dispatch(getDataAction());
+                // this.props.getDataAction();
+                // this.props.dispatch({ type: 'DATA_REQUESTED' });
+                store.dispatch(getDataAction());
+
                 this.setState({
                     redirect: true
                   });         
@@ -68,7 +74,6 @@ class Login extends React.Component {
             }
         });
         if(shouldLogin) {
-
                 return <Redirect to="/home" />
         }
         else {
@@ -120,4 +125,8 @@ function mapStateToProps(state) {
     return { logged: state.logged }
 }
   
+// const mapDispatchToProps = {
+//     getDataAction,
+//    };
+   
 export default connect(mapStateToProps)(Login);

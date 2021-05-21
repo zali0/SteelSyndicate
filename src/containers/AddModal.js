@@ -7,7 +7,9 @@ import add from '../images/add.png'
 import './Category.css';
 import './AddModal.css';
 import { useDispatch } from 'react-redux';
-import { addProduct, fetchData } from '../actions';
+import { addProduct, fetchData,getDataAction } from '../actions';
+import store from '../index';
+
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: 'flex',
@@ -42,12 +44,8 @@ const [stock, setStock] = useState("");
 
   const dispatch = useDispatch();
 const handleSubmit = (evt) => {
-    // evt.preventDefault();
-    console.log(`Submitting  ${name}`)
-    console.log(`Submitting  ${category}`)
-    console.log(`Submitting  ${dimensions}`)
-    console.log(`Submitting  ${unit}`)
-    console.log(`Submitting  ${stock}`)
+    evt.preventDefault();
+
     fetch('http://localhost:3003/addProduct', {
             method: "POST",
             body: JSON.stringify({
@@ -63,9 +61,11 @@ const handleSubmit = (evt) => {
         })
         .then(response => response.json())
         .then(data => console.log(data))
-        fetch("http://localhost:3003/data")
-        .then(response => response.json())
-        .then(data=> dispatch(fetchData(data)));
+        setTimeout(function(){ 
+          store.dispatch(getDataAction()); 
+        },500);
+
+
 }
   return (
     <div className="addModal" style= {{ display: "flex"}}>
