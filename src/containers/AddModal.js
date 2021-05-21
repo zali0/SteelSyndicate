@@ -6,7 +6,7 @@ import Fade from '@material-ui/core/Fade';
 import add from '../images/add.png'
 import './Category.css';
 import './AddModal.css';
-import { useDispatch } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { addProduct, fetchData,getDataAction } from '../actions';
 import store from '../index';
 
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TransitionsModal() {
+function TransitionsModal(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -45,10 +45,13 @@ const [stock, setStock] = useState("");
   const dispatch = useDispatch();
 const handleSubmit = (evt) => {
     evt.preventDefault();
-
+    console.log("PROPSSSSSSSS")
+    console.log(props.user.id)
+    let companyid = props.user.companyid;
     fetch('http://localhost:3003/addProduct', {
             method: "POST",
             body: JSON.stringify({
+              companyid,
               name,
               category,
               dimensions,
@@ -62,7 +65,7 @@ const handleSubmit = (evt) => {
         .then(response => response.json())
         .then(data => console.log(data))
         setTimeout(function(){ 
-          store.dispatch(getDataAction()); 
+          store.dispatch(getDataAction(props.user.companyid)); 
         },500);
 
 
@@ -144,3 +147,9 @@ const handleSubmit = (evt) => {
     </div>
   );
 }
+const mapStateToProps = (state) => {
+  return {
+      user: state.user
+  };
+}
+export default connect(mapStateToProps)(TransitionsModal);

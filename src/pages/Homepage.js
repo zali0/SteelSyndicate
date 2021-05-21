@@ -4,9 +4,7 @@ import DisplayCategories from '../components/DisplayCategories';
 import './Homepage.css';
 
 class Homepage extends React.Component {
-    componentDidMount() {
-        // dispatch(addProduct(object))
-    };
+    
     render() {
             return(
                 <div className="homepage">
@@ -15,11 +13,19 @@ class Homepage extends React.Component {
                         <h1>Secunderabad Steel Syndicate</h1>
                         <hr className="underline"/>
                     </div>
-                    
                     <DisplayCategories />
                 </div>
                  );
         }
 }
   
-  export default connect()(Homepage)
+const mapStateToProps = (state) => {
+    console.log(state)
+    return {
+        products: state.data.products,
+        status: state.data.status,
+        // error: state.data.error
+    };
+}
+
+export default connect(mapStateToProps)(Homepage)

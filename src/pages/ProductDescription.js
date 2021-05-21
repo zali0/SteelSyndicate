@@ -40,7 +40,11 @@ class Homepage extends React.Component {
             const {name, image, id, dimensions, unit, stock} = this.state.item;
         return(
             <div className="productDescription">
-                <h1>Secunderabad Steel Syndicate</h1>
+            <br />
+                <div className="companyName">
+                        <h1>Secunderabad Steel Syndicate</h1>
+                        <hr className="underline"/>
+                    </div>
                 <Link to="/home"><img src={back} alt="Back Arrow" width={70}/></Link>
                 <div className="front">
                     <img className="image" alt="" src={image}/>

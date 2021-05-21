@@ -28,5 +28,9 @@
 }
 
 .ag-theme-alpine .ag-header {
-    background-color: brown;
+    color: #fff !important;
+    background-color: rgb(68 36 15);
+}
+.ag-header-cell-text {
+    color: #fff;
 }

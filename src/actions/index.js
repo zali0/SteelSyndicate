@@ -2,12 +2,12 @@ const DATA_REQUESTED = "DATA_REQUESTED";
 const DATA_RECIEVED = "DATA_RECIEVED";
 const DATA_FAILED = "DATA_FAILED";
 
-export function getDataAction() {
+export function getDataAction(id) {
     return function(dispatch) {
       dispatch({
         type: DATA_REQUESTED,
       });
-    fetch("http://localhost:3003/data")
+    fetch(`http://localhost:3003/data/${id}`)
       .then(response => response.json())
       .then(data => {
           dispatch({
@@ -22,7 +22,12 @@ export function getDataAction() {
       );
     }
 }
-
+export function userInfo(data) {
+  return {
+    type: "LOAD_USER_DATA",
+    payload: data
+}
+}
 export const addProduct = (data) => {
     return {
         type: "ADD_PRODUCT",

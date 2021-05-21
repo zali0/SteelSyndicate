@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
-import { fetchData, getDataAction } from "../actions";
+import { fetchData, getDataAction, userInfo } from "../actions";
 import store from '../index';
 import './Login.css';
 
@@ -57,14 +57,18 @@ class Login extends React.Component {
             }
         })
         .then(response => response.json())
-        .then(json => {
-            if(json === "success") {
+        .then(user => {
+            if(user !== "error") {
+                console.log("IN THE LOGIN FETCH")
+                console.log(user);
                 shouldLogin = true;
                 // store.dispatch(getDataAction());
                 // this.props.getDataAction();
                 // this.props.dispatch({ type: 'DATA_REQUESTED' });
-                store.dispatch(getDataAction());
-
+                store.dispatch(userInfo(user));
+                console.log("THE USERS COMPANY ID")
+                console.log(user.companyid)
+                store.dispatch(getDataAction(user.id));
                 this.setState({
                     redirect: true
                   });         
