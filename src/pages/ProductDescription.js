@@ -1,10 +1,11 @@
 import React, { Fragment } from 'react';
+import { connect } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import Table from '../components/Table'
 import back from '../images/back.png'
 import './ProductDescription.css';
 
-class Homepage extends React.Component {
+class ProductDescription extends React.Component {
     constructor() {
         super();
         this.state =  {
@@ -27,22 +28,14 @@ class Homepage extends React.Component {
             this.setState({record: record})
         });
     }
-    // this.setState({record: data.record})
     render() {
-        let array = [
-            { make: "Toyota", model: "Celica", price: 35000 },
-            { make: "Ford", model: "Mondeo", price: 32000 },
-            { make: "Porsche", model: "Boxter", price: 72000 }
-        ];
-        // const { match: { params } } = this.props;
-        console.log(this.state.item)
-        if(this.state.item !== "") {
+        if(this.props.user.name) {
             const {name, image, id, dimensions, unit, stock} = this.state.item;
         return(
             <div className="productDescription">
             <br />
                 <div className="companyName">
-                        <h1>Secunderabad Steel Syndicate</h1>
+                        <h1>{this.props.user.name}</h1>
                         <hr className="underline"/>
                     </div>
                 <Link to="/home"><img src={back} alt="Back Arrow" width={70}/></Link>
@@ -67,9 +60,21 @@ class Homepage extends React.Component {
         );
         }
         else {
-            return <h3>Loading</h3>
+            return (
+                <div className="load">
+                    <p>Please Login!</p>
+                </div>
+            )
         }
     }
 }
+const mapStateToProps = (state) => {
+    console.log(state)
+    return {
+        products: state.data.products,
+        user: state.user,
+        // error: state.data.error
+    };
+}
 
-export default Homepage;
+export default connect(mapStateToProps)(ProductDescription);

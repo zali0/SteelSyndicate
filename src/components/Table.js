@@ -46,7 +46,7 @@ const Table = (props) => {
     }
     console.log(props.record)
     return (
-        <div>
+        <div className="table">
             <div className="ag-theme-alpine" style={{ height: 400, width: 800 }}>
                 <AgGridReact
                     rowData={rowData}>
@@ -84,7 +84,6 @@ const Table = (props) => {
                 <input type="submit" value="Add Product" />
             </form>
         </div>
-        
     );
 };
 

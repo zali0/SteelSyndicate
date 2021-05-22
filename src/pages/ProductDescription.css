@@ -27,7 +27,8 @@ body, html, * {
 }
 
 .productDescription .image {
-  width: 200px;
+  width: 100%;
+  padding: 0px;
 }
 .productDescription .column {
   width: 50%;
@@ -52,7 +53,7 @@ body, html, * {
     height: 500px;
 }
 .productDescription .front {
-  width: 60%;
+  width: 40%;
   margin: 0 auto;
   border: 1px solid black;
   display: flex;

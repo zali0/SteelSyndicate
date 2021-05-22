@@ -1,4 +1,4 @@
-.addProductForm {
+.table .addProductForm {
     width: 400px;
     display: flex;
     flex-direction: column;
@@ -12,25 +12,25 @@
     background-color: #2f4f4f;
     color: white;
 }
-.addProductForm input {
+.table .addProductForm input {
     border-radius: 10px;
 }
-.formLabel {
+.table .formLabel {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
 }
-.ag-theme-alpine {
+.table .ag-theme-alpine {
     margin: 10px;
 }
-.ag-theme-alpine .ag-root-wrapper {
+.table .ag-theme-alpine .ag-root-wrapper {
     border-radius: 10px;
 }
 
-.ag-theme-alpine .ag-header {
+.table .ag-theme-alpine .ag-header {
     color: #fff !important;
     background-color: rgb(68 36 15);
 }
-.ag-header-cell-text {
+.table .ag-header-cell-text {
     color: #fff;
 }

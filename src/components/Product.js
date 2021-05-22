@@ -9,10 +9,10 @@ class Product extends React.Component {
             <div className="product">
                 <img  className="image" alt="Centering Sheet" src={image}/>
                 <div className="column">
-                    <p>{name}</p>
-                    <p>{dimensions}<small>{unit}</small></p>
-                    <p className="stock">{stock}<small>pcs</small></p>
-                    <Link className="details" to={`/products/${id}`}>Details</Link>
+                    <p className="name">{name}</p>
+                    <p className="dimensions">{dimensions}<small> {unit}</small></p>
+                    <p className="stock">{stock}<small style={{color: '#000'}}>pcs</small></p>
+                    <Link className="record" to={`/products/${id}`}>Records</Link>
                 </div>
             </div>
         );

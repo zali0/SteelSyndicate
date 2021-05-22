@@ -9,25 +9,40 @@
   box-sizing: border-box;
 }
 
-.image {
+.product .image {
   padding: 5px;
   width: 50%;
 }
-.column {
+.product .column {
   padding: 10px;
   width: 50%;
 }
-.column p {
+.product .column p {
   font-size: 0.7em;
   margin: 0px;
 }
-.column .stock {
+.product .column .name {
+  color: #fea23b;
+  font-weight: 700;
+  font-size: 0.9em;
+}
+.product .column .stock {
+  color: #fea23b;
+  font-weight: 700;
   font-size: 1.2em;
 }
-.details {
-  text-decoration: none;
+.product .record {
+  text-decoration: underline;
   color: #000;
 }
-.details:hover {
+.product .record:hover {
+  color: #fea23b;
   text-decoration: underline;
+}
+
+@media only screen and (max-width: 786px) {
+  .product {
+    width: 100%;
+    margin: 10px;
+  }
 }

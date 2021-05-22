@@ -1,0 +1,12 @@
+.settingsModal {
+    background-color: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.signOut {
+    text-decoration: none;
+    color: #000;
+    font-weight: 700;
+    margin-top: 10px;
+}

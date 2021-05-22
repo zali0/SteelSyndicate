@@ -7,13 +7,25 @@
     align-items: center;
 }
 /* Main- MODAL Background */
-.MuiBackdrop-root { 
+ .MuiBackdrop-root { 
     background-color: rgba(36,40,42,0.8) !important;
 }
 
-.makeStyles-paper-2 {
+.addModal .makeStyles-paper-2 {
     width: 350px;
     border-radius: 10px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 2;;
+    margin-top: 10px;
+    border:  1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px auto;
+    background-color: #2f4f4f !important;
+    color: white;
 }
 .makeStyles-paper-26 {
     padding: 5px;
@@ -26,7 +38,7 @@
     color: #000;
     padding: 10px;
 }
-.button:hover {
+ .button:hover {
     background-color: #000;
     color: #fff;
 }
