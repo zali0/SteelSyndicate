@@ -9,7 +9,7 @@ import CategoryInfo from './pages/CategoryInfo';
 import Products from './pages/Products';
 import './App.css';
 import { Navbar } from './components/Navbar';
-import { CompanyInfo } from './pages/CompanyInfo';
+// import { CompanyInfo } from './pages/CompanyInfo';
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
         <Route path="/category/:name" component={CategoryInfo} exact />
         <Route path="/products" component={Products} exact/>
         <Route path="/products/:id" component={ProductDescription} exact />
-        <Route path="/companyinfo" component={CompanyInfo} exact/>
+        {/* <Route path="/companyinfo" component={CompanyInfo} exact/> */}
       </Switch>
     
     </div>
