@@ -23,7 +23,7 @@ export class Categories extends Component {
     }
     addCategory = () => {
         console.log("HERE")
-        fetch('http://localhost:3003/addCategory', {
+        fetch('https://quiet-taiga-70836.herokuapp.com/addCategory', {
         method: "POST",
         body: JSON.stringify({
             id: this.props.user.companyid,

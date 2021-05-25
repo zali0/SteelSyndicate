@@ -18,7 +18,7 @@ export class Navbar extends Component {
                                     <hr className="underline" />
                                 </div>
                                 <div className="address">
-                                    <p>{this.props.user.address}9-2-65/2B, HashMatpaeth Scunderabad</p>
+                                    <p>Secunderabad</p>
                                 </div>
                                <div className="icons tooltip">
                                 <NavLink

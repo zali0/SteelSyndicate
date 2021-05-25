@@ -7,7 +7,7 @@ export function getDataAction(id) {
       dispatch({
         type: DATA_REQUESTED,
       });
-    fetch(`http://localhost:3003/data/${id}`)
+    fetch(`https://quiet-taiga-70836.herokuapp.com/data/${id}`)
       .then(response => response.json())
       .then(data => {
           dispatch({

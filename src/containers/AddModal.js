@@ -49,7 +49,7 @@ const handleSubmit = (evt) => {
     console.log("PROPSSSSSSSS")
     console.log(props.user.id)
     let companyid = props.user.companyid;
-    fetch('http://localhost:3003/addProduct', {
+    fetch('https://quiet-taiga-70836.herokuapp.com/addProduct', {
             method: "POST",
             body: JSON.stringify({
               companyid,

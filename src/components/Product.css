@@ -1,6 +1,6 @@
 .product {
-  width: 200px;
-  /* min-height: 100px; */
+  width: 250px;
+  /* height: 150px; */
   border: 1px solid black;
   display: flex;
   background-color: #fff;

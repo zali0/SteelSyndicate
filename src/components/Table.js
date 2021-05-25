@@ -19,7 +19,7 @@ const Table = (props) => {
 
     useEffect(() => {
         setRowData(props.record)
-        fetch(`http://localhost:3003/getRecord/${id}`)
+        fetch(`https://quiet-taiga-70836.herokuapp.com/getRecord/${id}`)
         .then(result => result.json())
         .then(rowData => setRowData(rowData))
     }, [id]);
@@ -34,7 +34,7 @@ const Table = (props) => {
         console.log(`Submitting  ${date}`)
         console.log(`Submitting  ${produced}`)
         console.log(`Submitting  ${sold}`)
-        fetch(`http://localhost:3003/updateRecord/${props.id}`, {
+        fetch(`https://quiet-taiga-70836.herokuapp.com/updateRecord/${props.id}`, {
             method: "POST",
             body: JSON.stringify({ date, produced, sold, stock}),
             headers: {

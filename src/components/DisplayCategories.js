@@ -27,7 +27,7 @@ class DisplayCategories extends React.Component {
             ); 
         }
         else 
-        return <div>Loading!</div>
+        return <div>Loadin..g!</div>
         
             
     }

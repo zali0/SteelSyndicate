@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
+import { Navbar } from '../components/Navbar';
 import Table from '../components/Table'
 import back from '../images/back.png'
 import './ProductDescription.css';
@@ -15,35 +16,39 @@ class ProductDescription extends React.Component {
     }
     componentDidMount() {
         const { match: { params } } = this.props;
-        fetch(`http://localhost:3003/products/${params.id}`)
-        .then(res=> res.json())
-        .then(item => {
-            this.setState({item})
-        });
+        for(let i = 0; i< this.props.products.length; ++i) {
+            console.log("MAN THE ID")
+            console.log(params.id , "=", this.props.products[i].id)
+            if(Number(params.id) === Number(this.props.products[i].id)) {
+                console.log("FOUND IT!")
+                console.log(this.props.products[i])
+                let item = this.props.products[i];
+                this.setState({item: item})
+            }
+        }
 
-        fetch(`http://localhost:3003/getRecord/${params.id}`)
+        fetch(`https://quiet-taiga-70836.herokuapp.com/getRecord/${params.id}`)
         .then(res=> res.json())
         .then(record => {
             this.setState({record: record})
         });
     }
     render() {
+        console.log("THIS IS THE ITEM DATA")
+        console.log(this.state.item)
         if(this.props.user.name) {
-            const {name, image, id, dimensions, unit, stock} = this.state.item;
+            const {name, image, id, dimensions, unit, stock, category} = this.state.item;
         return(
             <div className="productDescription">
-            <br />
-                <div className="companyName">
-                        <h1>{this.props.user.name}</h1>
-                        <hr className="underline"/>
-                    </div>
-                <Link to="/home"><img src={back} alt="Back Arrow" width={70}/></Link>
+                <Navbar user={this.props.user} />
+                <Link to="/products"><img src={back} alt="Back Arrow" width={70}/></Link>
                 <div className="front">
                     <img className="image" alt="" src={image}/>
                     <div className="column">
                         <p className="name">{name}</p>
-                        <p>{dimensions}<small>{unit}</small></p>
-                        <p className="stock">{stock}<small>pcs</small></p>
+                        {/* <p className="dimensions">{category}</p> */}
+                        <p className="dimensions">{dimensions}<small> {unit}</small></p>
+                        <p className="stock">{stock}<small style={{color: '#000'}}>pcs</small></p>
                     </div>
                 </div>
                 <div className="frameDiv">
