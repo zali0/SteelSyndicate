@@ -46,7 +46,7 @@ class Login extends React.Component {
           }
       }
     onSubmit = () => {
-        fetch('https://quiet-taiga-70836.herokuapp.com/signin', {
+        fetch('/signin', {
             method: "POST",
             body: JSON.stringify({
                 email: this.state.email,
