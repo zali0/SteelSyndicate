@@ -34,7 +34,7 @@ class Category extends React.Component {
                 <hr/>
                 <br />
                 <div className="inline">
-                    <DisplayProducts products={filteredProducts}/>
+                    <DisplayProducts categories={this.props.categories} products={filteredProducts}/>
                     <AddModal/>
                 </div>
                 
@@ -43,4 +43,12 @@ class Category extends React.Component {
     }
 }
 
-export default connect()(Category);
+const mapStateToProps = (state) => {
+    console.log(state)
+    return {
+        categories: state.data.categories,
+        user: state.user,
+    };
+}
+
+export default connect(mapStateToProps)(Category);

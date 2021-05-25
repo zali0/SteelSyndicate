@@ -4,16 +4,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCog, faWarehouse, faInfoCircle} from '@fortawesome/free-solid-svg-icons'
 import SettingsModal from '../pages/SettingsModal';
 import { connect } from 'react-redux';
-import '../pages/Homepage.css';
+import './Navbar.css';
+
 export class Navbar extends Component {
     render() {
         if(this.props.user.name) {
             return (
-                <div className="homepage">
+                <div>
                     <div className="navbar">
                             <div className="companyDetails">
                                 <div>
-                                    <h1>{this.props.user.name}</h1>
+                                    <h1 className="companyName">{this.props.user.name}</h1>
                                     <hr className="underline" />
                                 </div>
                                 <div className="address">
@@ -30,7 +31,7 @@ export class Navbar extends Component {
                                     <FontAwesomeIcon className="icon" icon={faWarehouse} />
                                 </NavLink>
                                 <NavLink
-                                    to="/companyInfo"
+                                    to="/companyinfo"
                                     activeStyle={{
                                         fontWeight: "bold",
                                         color: "red"

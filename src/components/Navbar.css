@@ -1,8 +1,10 @@
 
 .navbar {
-    background-color: rgb(41, 27, 27);
-    padding:5px;
-  }
+  width: 100%;
+  background-color: rgb(41, 27, 27);
+  padding:5px;
+  height: 10vh;
+}
    .navbar {
     position: relative;
   }
@@ -11,8 +13,12 @@
     background-color: rgb(41, 27, 27);
     width: fit-content;
     color: #fff;
-    padding:5px;
     display: flex;
+    align-items: flex-end;
+  }
+  .companyDetails h1 {
+    display: flex;
+    align-self: end;
   }
   .companyDetails .address {
     display: flex;

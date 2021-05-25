@@ -19,7 +19,6 @@ class ProductDescription extends React.Component {
         .then(res=> res.json())
         .then(item => {
             this.setState({item})
-            
         });
 
         fetch(`http://localhost:3003/getRecord/${params.id}`)

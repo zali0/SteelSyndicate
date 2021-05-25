@@ -7,8 +7,9 @@ import add from '../images/add.png'
 import './Category.css';
 import './AddModal.css';
 import { connect, useDispatch } from 'react-redux';
-import { addProduct, fetchData,getDataAction } from '../actions';
+import { addProduct, fetchData, getDataAction } from '../actions';
 import store from '../index';
+import { Redirect } from 'react-router';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -36,7 +37,7 @@ function TransitionsModal(props) {
     setOpen(false);
   };
 const [name, setName] = useState("");
-const [category, setCategory] = useState("Pipes");
+const [category, setCategory] = useState("");
 const [dimensions, setDimensions] = useState("");
 const [unit, setUnit] = useState("");
 const [stock, setStock] = useState("");
@@ -65,9 +66,10 @@ const handleSubmit = (evt) => {
         .then(response => response.json())
         .then(data => console.log(data))
         setTimeout(function(){ 
+          console.log("Disppatching to the store")
           store.dispatch(getDataAction(props.user.companyid)); 
-        },500);
-
+        },1000);
+        // <Redirect to="/home"/>
 
 }
   return (
@@ -84,7 +86,7 @@ const handleSubmit = (evt) => {
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
-          timeout: 500,
+          // timeout: 500,
         }}
       >
         <Fade in={open}>
@@ -101,15 +103,23 @@ const handleSubmit = (evt) => {
       <div className="flex"> 
         <label for="category">Category: </label>
         <select value={category} onChange={e => setCategory(e.target.value)}>
-        ["Pipes", "Centering Sheets", "Column Box", "Bridge 40mm" , "Bridge 50mm", "Scaffolders", "Accessories"];
+        {props.categories.map((category, id) => {
+          return(
+            <option value={`${category.name}`}>
+              {category.name}
+            </option>
+          )
+        })
+        }
+        </select>
+        {/* ["Pipes", "Centering Sheets", "Column Box", "Bridge 40mm" , "Bridge 50mm", "Scaffolders", "Accessories"];
           <option selected value="Pipes">Pipes</option>
           <option value="Centering Sheets">Centering Sheets</option>
           <option value="Column Box">Column Box</option>
           <option value="Bridge 40mm">Bridge 40mm</option>
           <option value="Bridge 50mm">Bridge 50mm</option>
           <option value="Scaffolders">Scaffolders</option>
-          <option value="Accessories">Accessories</option>
-        </select>
+          <option value="Accessories">Accessories</option> */}
       </div>
       <div className="flex"> 
         <label for="dimensions">Dimensions: </label>
@@ -149,6 +159,8 @@ const handleSubmit = (evt) => {
 }
 const mapStateToProps = (state) => {
   return {
+      categories: state.data.categories,
+      products: state.data.products,
       user: state.user
   };
 }

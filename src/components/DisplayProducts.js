@@ -2,6 +2,8 @@ import React from 'react';
 import Product from './Product';
 import './DisplayProducts.css';
 
+let image;
+
 class DisplayProducts extends React.Component {
 
     render() {
@@ -11,12 +13,18 @@ class DisplayProducts extends React.Component {
               <div className="displayProducts">
               {
                 this.props.products.map((product, i) => {
+                  for(let i=0;i<this.props.categories.length; ++i) {
+                    if(this.props.products[i].category === this.props.categories[i].name) {
+                      console.log(this.props.categories[i].name);
+                      image = this.props.categories[i].image;
+                    }
+                  }
                   return (
                     <Product
                       key={i}
                       id={this.props.products[i].id}
                       name={this.props.products[i].name}
-                      image={this.props.products[i].image}
+                      image={image}
                       category={this.props.products[i].category}
                       dimensions={this.props.products[i].dimensions}
                       unit={this.props.products[i].unit}

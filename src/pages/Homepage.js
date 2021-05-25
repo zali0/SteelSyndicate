@@ -15,24 +15,26 @@ class Homepage extends React.Component {
             return(
                 <div className="homepage">
                     <Navbar />
-                {/* 2 navbars end */}
-                    <div className="companyInfo">
-                            <div className="col">
-                                <p className="title">Inventory</p>
-                                <p>Production: 10</p>
+                    <div className="space">
+                        <div className="companyInfo">
+                                <div className="col">
+                                    <p className="title">Inventory</p>
+                                    <p>Production: 10</p>
+                                </div>
+                                <div className="col">
+                                    <p className="title">Revenue</p>
+                                    <p>Production Cost: Rs 20000</p>
+                                    <p>Amount Generated: Rs 20000</p>
+                                    <p>Profit Generated: Rs 20000</p>
+                                </div>
                             </div>
-                            <div className="col">
-                                <p className="title">Revenue</p>
-                                <p>Production Cost: Rs 20000</p>
-                                <p>Amount Generated: Rs 20000</p>
-                                <p>Profit Generated: Rs 20000</p>
-                            </div>
-                        </div>
                     {/* <DisplayCategories /> */}
                     <div className="footer">
                         <p>&#169; All Rights Reserved by Ventory.com 2021</p>
                         <p>Developed by Zeeshan Ali</p>
                     </div>
+                </div>
+                    
                 </div>
             );
         }

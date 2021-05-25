@@ -1,0 +1,27 @@
+.displayCards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-height: 200px;
+}
+.addCategory {
+    border : 1px solid black;
+    background-color: #2f4f4f;
+    width: 30%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.addCategory input {
+    width: 100%;
+}
+
+.buttn {
+    margin: 10px;
+    text-align: center;
+    margin: 0 auto;
+    background-color: black;
+    color: white;
+}
