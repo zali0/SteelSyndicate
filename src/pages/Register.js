@@ -33,7 +33,7 @@ class Register extends React.Component {
 
     }
     onRegister = () => {
-        fetch('https://quiet-taiga-70836.herokuapp.com/register', {
+        fetch('https://cors-anywhere.herokuapp.com/https://quiet-taiga-70836.herokuapp.com/register', {
             method: "POST",
             body: JSON.stringify({
                 name: this.state.name,

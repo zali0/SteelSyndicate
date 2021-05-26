@@ -27,7 +27,7 @@ class ProductDescription extends React.Component {
             }
         }
 
-        fetch(`https://quiet-taiga-70836.herokuapp.com/getRecord/${params.id}`)
+        fetch(`https://cors-anywhere.herokuapp.com/https://quiet-taiga-70836.herokuapp.com/getRecord/${params.id}`)
         .then(res=> res.json())
         .then(record => {
             this.setState({record: record})

@@ -7,7 +7,7 @@ export function getDataAction(id) {
       dispatch({
         type: DATA_REQUESTED,
       });
-    fetch(`https://quiet-taiga-70836.herokuapp.com/data/${id}`)
+    fetch(`https://cors-anywhere.herokuapp.com/https://quiet-taiga-70836.herokuapp.com/data/${id}`)
       .then(response => response.json())
       .then(data => {
           dispatch({
