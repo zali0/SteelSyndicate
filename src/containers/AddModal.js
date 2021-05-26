@@ -41,7 +41,7 @@ const [category, setCategory] = useState(props.categories[0].name);
 const [dimensions, setDimensions] = useState("");
 const [unit, setUnit] = useState("");
 const [stock, setStock] = useState("");
-
+const [redirect, setRedirect] = useState(false);
 
   const dispatch = useDispatch();
 const handleSubmit = (evt) => {
@@ -69,9 +69,13 @@ const handleSubmit = (evt) => {
           console.log("Disppatching to the store")
           store.dispatch(getDataAction(props.user.companyid)); 
         },1000);
-        // <Redirect to="/home"/>
-
+        setRedirect(true);
 }
+  const renderRedirect = () => {
+    if (redirect) {
+        return <Redirect to='/categories' />
+      }
+  }
   return (
     <div className="addModal" style= {{ display: "flex"}}>
       <div onClick={handleOpen} className="add">
@@ -121,6 +125,7 @@ const handleSubmit = (evt) => {
           <option value="Scaffolders">Scaffolders</option>
           <option value="Accessories">Accessories</option> */}
       </div>
+      {renderRedirect()}
       <div className="flex"> 
         <label for="dimensions">Dimensions: </label>
         <input

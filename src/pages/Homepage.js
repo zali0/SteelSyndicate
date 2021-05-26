@@ -16,7 +16,7 @@ class Homepage extends React.Component {
                 <div className="homepage">
                     <Navbar />
                     <div className="space">
-                        <div className="companyInfo">
+                        {/* <div className="companyInfo">
                                 <div className="col">
                                     <p className="title">Inventory</p>
                                     <p>Production: 10</p>
@@ -27,7 +27,8 @@ class Homepage extends React.Component {
                                     <p>Amount Generated: Rs 20000</p>
                                     <p>Profit Generated: Rs 20000</p>
                                 </div>
-                            </div>
+                            </div> */}
+                            <img className="homepageImage" src="https://i.ytimg.com/vi/jfl_C6tWkg4/maxresdefault.jpg"/>
                     {/* <DisplayCategories /> */}
                     <div className="footer">
                         <p>&#169; All Rights Reserved by Ventory.com 2021</p>
