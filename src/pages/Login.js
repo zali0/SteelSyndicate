@@ -68,7 +68,7 @@ class Login extends React.Component {
                 store.dispatch(userInfo(user));
                 console.log("THE USERS COMPANY ID")
                 console.log(user.companyid)
-                store.dispatch(getDataAction(user.id));
+                store.dispatch(getDataAction(user.companyid));
                 this.setState({
                     redirect: true
                   });         
