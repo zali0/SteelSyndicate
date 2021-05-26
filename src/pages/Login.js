@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { fetchData, getDataAction, userInfo } from "../actions";
 import store from '../index';
+import logo  from './logo.png';
 import './Login.css';
 
 let shouldLogin = false;
@@ -98,7 +99,8 @@ class Login extends React.Component {
             return(
                 <div className="login">
                 {/* <div className=""> */}
-                    <h1>Ventory</h1>
+                    <img src={logo} className="logo"/>
+                    <h1>inventoryZee</h1>
                     <div className="loginForm">
                         <div className="flex"> 
                             <label for="email">Email: </label>

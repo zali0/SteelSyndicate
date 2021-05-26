@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
-
+import logo  from './logo.png';
 import './Login.css';
 
 let shouldLogin = false;
@@ -79,7 +79,8 @@ class Register extends React.Component {
     render() {
             return(
                 <div className="login">
-                    <h1>Ventory</h1>
+                    <img src={logo} className="logo"/>
+                    <h1>inventoryZee</h1>
                     <div className="loginForm">
                     <p>Register</p>
                         <div className="flex"> 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -37,12 +37,18 @@ function TransitionsModal(props) {
     setOpen(false);
   };
 const [name, setName] = useState("");
-const [category, setCategory] = useState(props.categories[0].name);
+const [category, setCategory] = useState("");
 const [dimensions, setDimensions] = useState("");
 const [unit, setUnit] = useState("");
 const [stock, setStock] = useState("");
 const [redirect, setRedirect] = useState(false);
-
+  // if(typeof props.categories[0] !== "undefined") {
+    
+  // }
+  useEffect(() => {
+    // Update the document title using the browser API
+    setCategory(props.categories[0].name);
+  });
   const dispatch = useDispatch();
 const handleSubmit = (evt) => {
     evt.preventDefault();

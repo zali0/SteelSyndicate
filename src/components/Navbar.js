@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCog, faWarehouse, faInfoCircle} from '@fortawesome/free-solid-svg-icons'
 import SettingsModal from '../pages/SettingsModal';
 import { connect } from 'react-redux';
+import logo  from './logo.png';
 import './Navbar.css';
 
 export class Navbar extends Component {
@@ -13,6 +14,8 @@ export class Navbar extends Component {
                 <div>
                     <div className="navbar">
                             <div className="companyDetails">
+                                    <img src={logo} className="navbarLogo"/>
+
                                 <div>
                                     <h1 className="companyName">{this.props.user.name}</h1>
                                     <hr className="underline" />

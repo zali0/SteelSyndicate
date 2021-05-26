@@ -35,7 +35,7 @@ class Category extends React.Component {
                 <br />
                 <div className="inline">
                     <DisplayProducts categories={this.props.categories} products={filteredProducts}/>
-                    <AddModal/>
+                    <AddModal categories={this.props.categories}/>
                 </div>
                 
             </div>
