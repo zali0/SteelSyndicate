@@ -37,7 +37,7 @@ function TransitionsModal(props) {
     setOpen(false);
   };
 const [name, setName] = useState("");
-const [category, setCategory] = useState(props.categories[0]);
+const [category, setCategory] = useState(props.categories[0].name);
 const [dimensions, setDimensions] = useState("");
 const [unit, setUnit] = useState("");
 const [stock, setStock] = useState("");
