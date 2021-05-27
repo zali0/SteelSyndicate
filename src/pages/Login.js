@@ -46,6 +46,10 @@ class Login extends React.Component {
           }
       }
     onSubmit = () => {
+        if(this.state.email === "" || this.state.password === "") {
+            console.log("Please fill in the blanks!");
+            return;
+        }
         fetch('https://quiet-taiga-70836.herokuapp.com/signin', {
             method: "POST",
             body: JSON.stringify({

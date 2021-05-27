@@ -33,6 +33,10 @@ class Register extends React.Component {
 
     }
     onRegister = () => {
+        if(this.state.name === "" || this.state.email === "" || this.state.password === "") {
+            console.log("Please fill in the blanks!");
+            return;
+        }
         fetch('https://quiet-taiga-70836.herokuapp.com/register', {
             method: "POST",
             body: JSON.stringify({
