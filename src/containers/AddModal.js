@@ -52,16 +52,16 @@ function TransitionsModal(props) {
   const dispatch = useDispatch();
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    if (
-      this.state.name === "" ||
-      this.state.category === "" ||
-      this.state.dimensions === "" ||
-      this.state.unit === "" ||
-      this.state.stock === ""
-    ) {
-      console.log("Please fill in the blanks!");
-      return;
-    }
+    // if (
+    //   this.state.name === "" ||
+    //   this.state.category === "" ||
+    //   this.state.dimensions === "" ||
+    //   this.state.unit === "" ||
+    //   this.state.stock === ""
+    // ) {
+    //   console.log("Please fill in the blanks!");
+    //   return;
+    // }
     console.log("PROPSSSSSSSS");
     console.log(props.user.id);
     let companyid = props.user.companyid;
