@@ -18,7 +18,7 @@ export class Products extends Component {
         return (
             <div>
                 <Navbar user={this.props.user}/>
-                <Category categoryName={"Products"} products={this.state.products} />
+                <Category categories={this.props.categories} categoryName={"Products"} products={this.state.products} />
             </div>
         )
         else {

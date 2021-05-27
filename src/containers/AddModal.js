@@ -47,8 +47,9 @@ const [redirect, setRedirect] = useState(false);
   // }
   useEffect(() => {
     // Update the document title using the browser API
-    setCategory(props.categories[0].name);
-  });
+    if(props.categories.length)
+      setCategory(props.categories[0].name);
+  }, []);
   const dispatch = useDispatch();
 const handleSubmit = (evt) => {
     evt.preventDefault();
