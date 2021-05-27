@@ -1,25 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
-import add from '../images/add.png'
-import './Category.css';
-import './AddModal.css';
-import { connect, useDispatch } from 'react-redux';
-import { addProduct, fetchData, getDataAction } from '../actions';
-import store from '../index';
-import { Redirect } from 'react-router';
+import React, { useEffect, useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Modal from "@material-ui/core/Modal";
+import Backdrop from "@material-ui/core/Backdrop";
+import Fade from "@material-ui/core/Fade";
+import add from "../images/add.png";
+import "./Category.css";
+import "./AddModal.css";
+import { connect, useDispatch } from "react-redux";
+import { addProduct, fetchData, getDataAction } from "../actions";
+import store from "../index";
+import { Redirect } from "react-router";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
+    border: "2px solid #000",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
@@ -36,55 +36,65 @@ function TransitionsModal(props) {
   const handleClose = () => {
     setOpen(false);
   };
-const [name, setName] = useState("");
-const [category, setCategory] = useState("");
-const [dimensions, setDimensions] = useState("");
-const [unit, setUnit] = useState("");
-const [stock, setStock] = useState("");
-const [redirect, setRedirect] = useState(false);
+  const [name, setName] = useState("");
+  const [category, setCategory] = useState("");
+  const [dimensions, setDimensions] = useState("");
+  const [unit, setUnit] = useState("");
+  const [stock, setStock] = useState("");
+  const [redirect, setRedirect] = useState(false);
   // if(typeof props.categories[0] !== "undefined") {
-    
+
   // }
   useEffect(() => {
     // Update the document title using the browser API
-    if(props.categories.length)
-      setCategory(props.categories[0].name);
+    if (props.categories.length) setCategory(props.categories[0].name);
   }, []);
   const dispatch = useDispatch();
-const handleSubmit = (evt) => {
+  const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log("PROPSSSSSSSS")
-    console.log(props.user.id)
+    if (
+      this.state.name === "" ||
+      this.state.category === "" ||
+      this.state.dimensions === "" ||
+      this.state.unit === "" ||
+      this.state.name === "" ||
+      this.state.stock === ""
+    ) {
+      console.log("Please fill in the blanks!");
+      return;
+    }
+    console.log("PROPSSSSSSSS");
+    console.log(props.user.id);
     let companyid = props.user.companyid;
-    fetch('https://quiet-taiga-70836.herokuapp.com/addProduct', {
-            method: "POST",
-            body: JSON.stringify({
-              companyid,
-              name,
-              category,
-              dimensions,
-              unit,
-              stock
-          }),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        setTimeout(function(){ 
-          console.log("Disppatching to the store")
-          store.dispatch(getDataAction(props.user.companyid)); 
-        },1000);
-        setRedirect(true);
-}
+    fetch("https://quiet-taiga-70836.herokuapp.com/addProduct", {
+      method: "POST",
+      body: JSON.stringify({
+        companyid,
+        name,
+        category,
+        dimensions,
+        unit,
+        stock,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+    setTimeout(function () {
+      console.log("Disppatching to the store");
+      store.dispatch(getDataAction(props.user.companyid));
+    }, 1000);
+    setRedirect(true);
+  };
   const renderRedirect = () => {
     if (redirect) {
-        return <Redirect to='/categories' />
-      }
-  }
+      return <Redirect to="/categories" />;
+    }
+  };
   return (
-    <div className="addModal" style= {{ display: "flex"}}>
+    <div className="addModal" style={{ display: "flex" }}>
       <div onClick={handleOpen} className="add">
         <img src={add} alt={"Add"} />
       </div>
@@ -96,34 +106,38 @@ const handleSubmit = (evt) => {
         onClose={handleClose}
         closeAfterTransition
         BackdropComponent={Backdrop}
-        BackdropProps={{
-          // timeout: 500,
-        }}
+        BackdropProps={
+          {
+            // timeout: 500,
+          }
+        }
       >
         <Fade in={open}>
           <div className={classes.paper}>
             <form className="addProductForm" onSubmit={handleSubmit}>
-      <div className="flex"> 
-        <label for="name">Name: </label>
-        <input
-          type="text"
-          value={name}
-          onChange={e => setName(e.target.value)}
-        />
-      </div>
-      <div className="flex"> 
-        <label for="category">Category: </label>
-        <select value={category} onChange={e => setCategory(e.target.value)}>
-        {props.categories.map((category, id) => {
-          return(
-            <option value={`${category.name}`}>
-              {category.name}
-            </option>
-          )
-        })
-        }
-        </select>
-        {/* ["Pipes", "Centering Sheets", "Column Box", "Bridge 40mm" , "Bridge 50mm", "Scaffolders", "Accessories"];
+              <div className="flex">
+                <label for="name">Name: </label>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+              <div className="flex">
+                <label for="category">Category: </label>
+                <select
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                >
+                  {props.categories.map((category, id) => {
+                    return (
+                      <option value={`${category.name}`}>
+                        {category.name}
+                      </option>
+                    );
+                  })}
+                </select>
+                {/* ["Pipes", "Centering Sheets", "Column Box", "Bridge 40mm" , "Bridge 50mm", "Scaffolders", "Accessories"];
           <option selected value="Pipes">Pipes</option>
           <option value="Centering Sheets">Centering Sheets</option>
           <option value="Column Box">Column Box</option>
@@ -131,38 +145,38 @@ const handleSubmit = (evt) => {
           <option value="Bridge 50mm">Bridge 50mm</option>
           <option value="Scaffolders">Scaffolders</option>
           <option value="Accessories">Accessories</option> */}
-      </div>
-      {renderRedirect()}
-      <div className="flex"> 
-        <label for="dimensions">Dimensions: </label>
-        <input
-          type="text"
-          value={dimensions}
-          onChange={e => setDimensions(e.target.value)}
-          placeholder={"Vertical 3, 2' x 3'."}
-        />
-      </div>
-      <div className="flex"> 
-      <label for="unit">Unit: </label>
-        <input
-          type="text"
-          value={unit}
-          onChange={e => setUnit(e.target.value)}
-          placeholder={"mt, angular, inches."}
-        />
-      </div>
-      <div className="flex"> 
-        <label for="stock">Stock: </label>
-        <input
-          type="number"
-          value={stock}
-          onChange={e => setStock(e.target.value)}
-        />
-      </div>
-      <div style={{textAlign: 'center'}}>
-        <input className="button" type="submit" value="Add Product" />
-      </div>
-    </form>
+              </div>
+              {renderRedirect()}
+              <div className="flex">
+                <label for="dimensions">Dimensions: </label>
+                <input
+                  type="text"
+                  value={dimensions}
+                  onChange={(e) => setDimensions(e.target.value)}
+                  placeholder={"Vertical 3, 2' x 3'."}
+                />
+              </div>
+              <div className="flex">
+                <label for="unit">Unit: </label>
+                <input
+                  type="text"
+                  value={unit}
+                  onChange={(e) => setUnit(e.target.value)}
+                  placeholder={"mt, angular, inches."}
+                />
+              </div>
+              <div className="flex">
+                <label for="stock">Stock: </label>
+                <input
+                  type="number"
+                  value={stock}
+                  onChange={(e) => setStock(e.target.value)}
+                />
+              </div>
+              <div style={{ textAlign: "center" }}>
+                <input className="button" type="submit" value="Add Product" />
+              </div>
+            </form>
           </div>
         </Fade>
       </Modal>
@@ -171,9 +185,9 @@ const handleSubmit = (evt) => {
 }
 const mapStateToProps = (state) => {
   return {
-      categories: state.data.categories,
-      products: state.data.products,
-      user: state.user
+    categories: state.data.categories,
+    products: state.data.products,
+    user: state.user,
   };
-}
+};
 export default connect(mapStateToProps)(TransitionsModal);

@@ -22,7 +22,10 @@ export class Categories extends Component {
         this.setState({image: event.target.value});
     }
     addCategory = () => {
-        console.log("HERE")
+        if(this.state.name === "" || this.state.image === "") {
+            console.log("Please fill in the blanks!");
+            return;
+        }
         fetch('https://quiet-taiga-70836.herokuapp.com/addCategory', {
         method: "POST",
         body: JSON.stringify({
