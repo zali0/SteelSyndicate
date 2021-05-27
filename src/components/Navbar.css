@@ -64,7 +64,7 @@
     list-style: none;
   }
   .navbar2 ul li {
-    margin-left: 40px;
+    margin: 30px;
     font-size: 1.3em;
   }
    .link {
@@ -97,10 +97,14 @@
 
   @media screen and (max-width: 760px) {
     .navbar {
-      height: 25vh;
+      height: 30vh;
     }
     .companyDetails .icons {
       margin-top: 10px;
       position: relative;
+    }
+    .navbar2 ul li {
+      margin: 10px;
+      font-size: 0.9em;
     }
   }
