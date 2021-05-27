@@ -57,7 +57,6 @@ function TransitionsModal(props) {
       this.state.category === "" ||
       this.state.dimensions === "" ||
       this.state.unit === "" ||
-      this.state.name === "" ||
       this.state.stock === ""
     ) {
       console.log("Please fill in the blanks!");
