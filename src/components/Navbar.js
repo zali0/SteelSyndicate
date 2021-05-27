@@ -25,7 +25,7 @@ export class Navbar extends Component {
                                 </div>
                                <div className="icons tooltip">
                                 <NavLink
-                                    to="/warehouse"
+                                    to="/products"
                                     activeStyle={{
                                         fontWeight: "bold",
                                         color: "red"
@@ -33,7 +33,7 @@ export class Navbar extends Component {
                                 >
                                     <FontAwesomeIcon className="icon" icon={faWarehouse} />
                                 </NavLink>
-                                <NavLink
+                                {/* <NavLink
                                     to="/companyinfo"
                                     activeStyle={{
                                         fontWeight: "bold",
@@ -41,7 +41,7 @@ export class Navbar extends Component {
                                     }}
                                 >
                                     <FontAwesomeIcon className="icon" icon={faInfoCircle} />
-                                </NavLink>
+                                </NavLink> */}
                                 <SettingsModal />
                                </div>
                             </div>

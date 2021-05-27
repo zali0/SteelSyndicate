@@ -100,7 +100,7 @@ class Login extends React.Component {
                 <div className="login">
                 {/* <div className=""> */}
                     <img src={logo} className="logo"/>
-                    <h1>inventoryZee</h1>
+                    {/* <h1>inventoryZee</h1> */}
                     <div className="loginForm">
                         <div className="flex"> 
                             <label for="email">Email: </label>

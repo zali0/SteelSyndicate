@@ -80,7 +80,7 @@ class Register extends React.Component {
             return(
                 <div className="login">
                     <img src={logo} className="logo"/>
-                    <h1>inventoryZee</h1>
+                    {/* <h1>inventoryZee</h1> */}
                     <div className="loginForm">
                     <p>Register</p>
                         <div className="flex"> 
